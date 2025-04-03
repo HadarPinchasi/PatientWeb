@@ -15,7 +15,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/upload", uploadRoutes);
 app.use("/patients", patientRoutes);
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, "0.0.0.0", () => 
+    console.log(`Server running on http://0.0.0.0:${PORT}`)
+);
 
 
 
