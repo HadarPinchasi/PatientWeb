@@ -1,3 +1,4 @@
+- The detailed explanation of how to solve the task has been sent in a separate Word document
 # Revision Keeper
 Revision Keeper is a tool that allows operators to upload CSV files containing patient data and outcomes. The uploaded data is displayed in an interactive table that can be sorted by multiple columns.
 
