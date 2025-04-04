@@ -53,7 +53,7 @@ function validateCSV(results, headers) {
         }
         // Check for required values
         REQUIRED_COLUMNS.forEach(column => {
-            if (!row[column] || row[column].trim() === ""|| row[column] === null) {
+            if (!row[column] || row[column].trim() === "" || row[column] === null) {
                 errors.push(`Missing value in '${column}' at row ${index + 1}`);
             }
         });
@@ -140,10 +140,12 @@ router.post("/", (req, res) => {
 
         const filePath = req.file.path;
         const results = [];
-        
+
         // Process CSV file stream
         fs.createReadStream(filePath)
-            .pipe(csv())
+            .pipe(csv({
+                mapHeaders: ({ header }) => header.trim()
+            }))
             .on("headers", (headers) => (req.headersCsv = headers))
             .on("data", (row) => results.push(row))
             .on("end", async () => {
